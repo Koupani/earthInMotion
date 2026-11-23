@@ -1,0 +1,383 @@
+.solar-map {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 38vw, 480px) !important;
+  min-height: 340px;
+  max-height: 480px;
+  margin: 6px auto 0;
+  overflow: hidden;
+  background: #101a20;
+}
+
+.solar-map canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  touch-action: none;
+}
+
+@media (max-width: 440px) {
+  .site-header {
+    height: auto;
+    min-height: 94px;
+    flex-wrap: wrap;
+    gap: 4px 7px;
+    padding: 8px 4%;
+  }
+
+  .brand {
+    order: 1;
+  }
+
+  .present-button {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .header-nav {
+    order: 3;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    justify-content: space-between;
+    gap: 7px;
+  }
+}
+
+.planet-order-challenge {
+  margin-top: 20px;
+  padding: 25px 28px 22px;
+  border-top: 1px solid #dfe7df;
+  background: #fff;
+}
+
+.challenge-heading,
+.challenge-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.challenge-heading .eyebrow {
+  color: #769078;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.challenge-heading h2 {
+  margin-top: 7px;
+  color: #304c3a;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 650;
+}
+
+.challenge-heading p {
+  margin-top: 5px;
+  color: #7d897e;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.challenge-secondary,
+.challenge-primary {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid #dce5dc;
+  border-radius: 4px;
+  background: #fff;
+  color: #526d57;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.challenge-secondary svg,
+.challenge-primary svg {
+  width: 14px;
+  height: 14px;
+}
+
+.challenge-list {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0 15px;
+  padding: 0;
+  list-style: none;
+}
+
+.challenge-item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  min-height: 56px;
+  padding: 5px;
+  border: 1px solid #dfe7df;
+  border-radius: 4px;
+  background: #fbfcfa;
+  cursor: grab;
+  touch-action: manipulation;
+  transition: border-color .15s, background-color .15s, transform .15s;
+}
+
+.challenge-item:active {
+  cursor: grabbing;
+}
+
+.challenge-item.drop-target {
+  border-color: #5b966e;
+  background: #eef5ed;
+  transform: translateY(-2px);
+}
+
+.challenge-position {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce5dc;
+  border-radius: 50%;
+  color: #6d806f;
+  font-size: 9px;
+}
+
+.challenge-planet-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #405b46;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.challenge-moves {
+  display: grid;
+  gap: 1px;
+}
+
+.move-planet {
+  width: 24px;
+  height: 20px;
+  padding: 0;
+  border-radius: 3px;
+  color: #7c907e;
+}
+
+.move-planet svg {
+  width: 13px;
+  height: 13px;
+}
+
+.move-planet:hover:not(:disabled) {
+  background: #e7efe6;
+  color: #356e4d;
+}
+
+.move-planet:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.challenge-footer {
+  padding-top: 14px;
+  border-top: 1px solid #edf0eb;
+}
+
+.challenge-feedback {
+  min-height: 18px;
+  color: #778477;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.challenge-feedback.retry {
+  color: #9a7040;
+}
+
+.challenge-feedback.success {
+  color: #34704a;
+  font-weight: 600;
+}
+
+.challenge-primary {
+  border-color: #356e4d;
+  background: #356e4d;
+  color: #fff;
+}
+
+.challenge-primary:disabled {
+  cursor: default;
+  opacity: .55;
+}
+
+.solar-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 15px;
+  padding: 11px 0;
+  border-top: 1px solid #e6ebe5;
+  border-bottom: 1px solid #e6ebe5;
+}
+
+.solar-motion-button,
+.solar-perspective-button {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid #d6e0d6;
+  border-radius: 4px;
+  background: #fff;
+  color: #426448;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.solar-motion-button[aria-pressed='true'],
+.solar-perspective-button[aria-pressed='true'] {
+  border-color: #427957;
+  background: #e8f1e8;
+  color: #285d45;
+}
+
+.solar-motion-button svg {
+  width: 13px;
+  height: 13px;
+}
+
+.solar-speed-control,
+.solar-range-control {
+  display: grid;
+  align-items: center;
+  gap: 4px 8px;
+  color: #778477;
+  font-size: 8px;
+}
+
+.solar-speed-control {
+  grid-template-columns: auto auto;
+}
+
+.solar-speed-control select {
+  min-height: 29px;
+  padding: 0 7px;
+  border: 1px solid #dfe7df;
+  border-radius: 3px;
+  background: #fff;
+  color: #506750;
+  font-size: 9px;
+}
+
+.solar-range-control {
+  grid-template-columns: auto minmax(65px, 94px) 34px;
+}
+
+.solar-range-control input {
+  width: 100%;
+  accent-color: #4a8059;
+}
+
+.solar-range-control output {
+  color: #617763;
+  font-size: 8px;
+  text-align: right;
+}
+
+@media (max-width: 1050px) {
+  .challenge-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .planet-order-challenge {
+    padding: 22px 18px;
+  }
+
+  .challenge-heading,
+  .challenge-footer {
+    align-items: flex-start;
+  }
+
+  .challenge-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .challenge-footer {
+    flex-direction: column;
+  }
+
+  .solar-controls {
+    gap: 8px;
+  }
+
+  .solar-range-control {
+    grid-template-columns: auto minmax(58px, 1fr) 32px;
+    flex: 1 1 190px;
+  }
+
+  .solar-map {
+    height: clamp(300px, 78vw, 430px) !important;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 440px) {
+  .planet-order-challenge {
+    padding: 19px 13px;
+  }
+
+  .challenge-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .challenge-heading h2 {
+    font-size: 17px;
+  }
+
+  .challenge-heading p,
+  .challenge-feedback {
+    font-size: 9px;
+  }
+
+  .challenge-list {
+    gap: 6px;
+  }
+
+  .challenge-item {
+    grid-template-columns: 20px minmax(0, 1fr) 23px;
+    min-height: 52px;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .challenge-planet-name {
+    font-size: 9px;
+  }
+
+  .solar-map {
+    height: min(86vw, 360px) !important;
+    min-height: 300px;
+  }
+
+  .solar-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .solar-range-control {
+    grid-column: span 2;
+  }
+
+  .solar-perspective-button,
+  .solar-motion-button,
+  .solar-speed-control select {
+    min-width: 0;
+  }
+}
