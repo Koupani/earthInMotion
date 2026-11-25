@@ -15,7 +15,7 @@ test('every quiz question has distinct choices, one valid answer, and an explana
 })
 
 test('solar system quiz scores the supplied answers rather than the Earth quiz answers', () => {
-  const answers = [1, 1, 0, 0, 2, 1]
+  const answers = [1, 1, 0, 0, 2, 2]
   assert.equal(scoreQuiz(answers, solarSystemQuizQuestions), 6)
   assert.equal(scoreQuiz(answers.slice(0, 2), solarSystemQuizQuestions), 2)
   assert.equal(scoreQuiz([0, 0, 1, 1, 0, 0], solarSystemQuizQuestions), 0)
